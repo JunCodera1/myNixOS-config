@@ -84,6 +84,18 @@ in
       vscodium
       nodejs_20
       fish
+      jetbrains.idea-community-src
+      jdk21
+      openjfx
+      glib
+      gtk3
+      gdk-pixbuf
+      atk
+      pango
+      cairo
+      maven
+      openjdk
+      libGL
     ];
   };
   
@@ -106,5 +118,7 @@ in
   programs.the-honkers-railway-launcher.enable = true;
 
   system.stateVersion = "25.05";
+  
 }
+
 
