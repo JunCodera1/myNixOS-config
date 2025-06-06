@@ -14,23 +14,21 @@
 
   outputs = { nixpkgs, catppuccin, home-manager, zen-browser, ... } @ inputs: 
   {
-   nixosConfigurations.nixchan = nixpkgs.lib.nixosSystem {
+   nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
 
       modules = [
       ./configuration.nix
-      ./hyprland.nix
-      ./fonts.nix
       catppuccin.nixosModules.catppuccin
       home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.backupFileExtension = "HMBackup";
               home-manager.useUserPackages = true;
-              home-manager.users.quiet.imports = [
+              home-manager.users.jun.imports = [
                 ./home.nix
-                catppuccin.homeManagerModules.catppuccin
+                catppuccin.homeModules.catppuccin
               ];
               home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux";};
             }

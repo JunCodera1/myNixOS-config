@@ -1,8 +1,8 @@
-{ config, pkgs, system, inputs, ... }:
+{ config, pkgs, lib , system, inputs, ... }:
 
 {
-  home.username = "quiet";
-  home.homeDirectory = "/home/quiet";
+  home.username = lib.mkForce "jun";
+  home.homeDirectory = lib.mkForce "/home/jun";
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
@@ -12,7 +12,7 @@
     p7zip
     oh-my-zsh
    oh-my-posh
-    inputs.zen-browser.packages."${system}".specific
+    inputs.zen-browser.packages.${system}.default
   ];
 
   # basic configuration of git, please change to your own
