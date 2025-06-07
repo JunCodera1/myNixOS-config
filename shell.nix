@@ -6,6 +6,8 @@ pkgs.mkShell {
     xorg.libXxf86vm
     glibc
     glib
+    binutils
+    zlib
     gsettings-desktop-schemas
     (pkgs.jdk21.override {enableJavaFX = true;})
   ];

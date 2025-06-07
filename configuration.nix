@@ -112,7 +112,10 @@ in
   INPUT_METHOD = "fcitx";
 };
 
-
+  programs.steam.enable = true;
+  
+  hardware.opengl.enable = true;
+  
   services.openssh.enable = true;
 
   programs.the-honkers-railway-launcher.enable = true;

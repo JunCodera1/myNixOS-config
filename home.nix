@@ -12,6 +12,7 @@
     p7zip
     oh-my-zsh
    oh-my-posh
+   osu-lazer-bin
     inputs.zen-browser.packages.${system}.default
   ];
 
