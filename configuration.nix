@@ -11,6 +11,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./nbfc.nix
       aagl-gtk-on-nix.module
     ];
 
@@ -62,6 +63,7 @@ in
 
   services.printing.enable = true;
 
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -74,26 +76,30 @@ in
   users.users.jun = {
     isNormalUser = true;
     description = "Tran Phan Minh Tien";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [
       firefox
       fastfetch
       git
       neovim
       kitty
-      vscodium
       nodejs_20
+      vscodium
       fish
       jetbrains.idea-community-src
       jdk21
+      android-studio
       openjfx
       glib
       gtk3
       gdk-pixbuf
+      htop
+      lm_sensors
       atk
       pango
       cairo
       maven
+      obs-studio
       openjdk
       libGL
     ];
@@ -104,7 +110,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [ postgresql ];
   environment.variables = {
   GTK_IM_MODULE = "fcitx";
   QT_IM_MODULE = "fcitx";
@@ -117,7 +123,18 @@ in
   hardware.opengl.enable = true;
   
   services.openssh.enable = true;
+  services.postgresql = {
+      enable = true;
+      ensureDatabases = [ "mydb" ];
+      ensureUsers = [
+        {
+          name = "postgres";
 
+        }
+      ];
+    };
+
+  virtualisation.docker.enable = true;
   programs.the-honkers-railway-launcher.enable = true;
 
   system.stateVersion = "25.05";

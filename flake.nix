@@ -10,9 +10,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nbfc-linux = {
+      url = "github:nbfc-linux/nbfc-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, catppuccin, home-manager, zen-browser, ... } @ inputs: 
+  outputs = { nixpkgs, catppuccin, home-manager, zen-browser,self, ... } @ inputs: 
   {
    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
